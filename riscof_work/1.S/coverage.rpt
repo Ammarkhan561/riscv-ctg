@@ -1,0 +1,17 @@
+---
+sv39:
+  config:
+  - check ISA:=regex(.*I.*Zicsr.*)
+  csr_comb:
+    (mstatus & 0x1800) == 0x0800: 11
+    (satp >> 60)       == 0x8: 15
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (rs2_val == 0xF) or (rs2_val == 0xD): 2
+    coverage: 1/1
+  total_coverage: 6/6

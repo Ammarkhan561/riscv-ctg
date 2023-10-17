@@ -1,0 +1,20 @@
+# For Licence details look at https://github.com/riscv-software-src/riscv-ctg/-/blob/master/LICENSE.incore
+
+sv39: 
+   
+    config: 
+      - check ISA:=regex(.*I.*Zicsr.*)            # Ensure the ISA contains "I" and "Zicsr" features.
+    
+    mnemonics:    
+      csrrw: 0                                    # Set the expected encoding value for the "csrrw" mnemonic to 0.
+      csrrs: 0                                    # Set the expected encoding value for the "csrrs" mnemonic to 0.
+      sd   : 0
+    
+    csr_comb:
+      (satp >> 60)       == 0x8       : 0         # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+      (mstatus & 0x1800) == 0x0800    : 0         # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+   
+    val_comb:
+      (rs2_val == 0xF) or (rs2_val == 0xD) : 0    # Check if "mcause" indicates a load or store page fault.(should hit only twice)
+
+    

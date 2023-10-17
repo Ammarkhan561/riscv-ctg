@@ -1,0 +1,5 @@
+
+
+.PHONY : TARGET0
+TARGET0 :
+	@cd /home/ammar/Documents/riscv-ctg/riscof_work/1.S;riscv64-unknown-elf-gcc -march=rv64i_zicsr          -static -mcmodel=medany -fvisibility=hidden -nostdlib -nostartfiles         -T /home/ammar/Documents/riscv-arch-test/sail_cSim/env/link.ld         -I /home/ammar/Documents/riscv-arch-test/sail_cSim/env/         -I /home/ammar/Documents/riscv-arch-test/riscv-test-suite/env -mabi=lp64  /home/ammar/Documents/riscv-ctg/check/1.S -o ref.elf -Drvtest_mtrap_routine=True -Drvtest_strap_routine=True -DTEST_CASE_1=True -DXLEN=64;riscv64-unknown-elf-objdump -D ref.elf > ref.disass;riscv_sim_RV64 --ram-size=8796093022208 --signature-granularity=8 --enable-pmp --test-signature=/home/ammar/Documents/riscv-ctg/riscof_work/1.S/Reference-sail_c_simulator.signature ref.elf > 1.log 2>&1;riscv_isac --verbose info coverage -d                         -t 1.log --parser-name c_sail -o coverage.rpt                          --sig-label begin_signature  end_signature                         -e ref.elf -c /home/ammar/Documents/riscv-ctg/sample_cgfs/dataset.cgf -c /home/ammar/Documents/riscv-ctg/sample_cgfs/sv39.cgf -x64   -l sv39;

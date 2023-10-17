@@ -1,0 +1,13 @@
+# testlist generated on 2023-10-17 11:34 GMT
+/home/ammar/Documents/riscv-ctg/check/1.S:
+  commit_id: '-'
+  work_dir: /home/ammar/Documents/riscv-ctg/riscof_work/1.S
+  macros:
+  - rvtest_mtrap_routine=True
+  - rvtest_strap_routine=True
+  - TEST_CASE_1=True
+  - XLEN=64
+  isa: RV64I_Zicsr
+  coverage_labels:
+  - sv39
+  test_path: /home/ammar/Documents/riscv-ctg/check/1.S
