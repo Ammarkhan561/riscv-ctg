@@ -3,8 +3,9 @@
 check_satp: 
    
     config: 
+                                                  # Ensure the ISA contains "I" and "Zicsr" features.
+      - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; 
 
-      - check ISA:=regex(.*I.*Zicsr.*)            # Ensure the ISA contains "I" and "Zicsr" features.
     
     mnemonics:    
     
@@ -17,8 +18,8 @@ check_satp:
 check_mode_change:
   
     config: 
-
-      - check ISA:=regex(.*I.*Zicsr.*)            # Ensure the ISA contains "I" and "Zicsr" features.
+                                                  # Ensure the ISA contains "I" and "Zicsr" features.
+      - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; 
     
     mnemonics:    
     
@@ -31,8 +32,8 @@ check_mode_change:
 check_mcause:
 
     config: 
-
-      - check ISA:=regex(.*I.*Zicsr.*)            # Ensure the ISA contains "I" and "Zicsr" features.
+                                                  # Ensure the ISA contains "I" and "Zicsr" features.
+      - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; 
     
     mnemonics:    
     
@@ -47,8 +48,8 @@ check_mcause:
 check_permission:
 
     config: 
-
-      - check ISA:=regex(.*I.*Zicsr.*)            # Ensure the ISA contains "I" and "Zicsr" features.
+                                                  # Ensure the ISA contains "I" and "Zicsr" features.
+      - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; 
     
     mnemonics:    
    
@@ -61,8 +62,8 @@ check_permission:
 check_level:
 
     config: 
-
-      - check ISA:=regex(.*I.*Zicsr.*)            # Ensure the ISA contains "I" and "Zicsr" features.
+                                                  # Ensure the ISA contains "I" and "Zicsr" features.
+      - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; 
     
     mnemonics:    
    
