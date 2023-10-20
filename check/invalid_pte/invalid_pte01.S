@@ -20,7 +20,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",check_satp,check_mode_change,check_mcause,check_permission,check_level)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",check_satp_invalid_PTE,check_Smode_change_invalid_PTE,check_loadstore_fault_invalid_PTE,check_permission_and_level0_for_invalid_PTE)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -47,6 +47,7 @@ _start:
 # -------------------------Set the all mem PMP-----------------------------	
 
 	ALL_MEM_PMP							        // set the permissions of all memory 
+	csrw satp, zero								// write zero to the satp (bare mode)
 	
 # -------------------------------------------------------------------------
 
@@ -59,22 +60,18 @@ _start:
 
 	LA (a0, rvtest_slvl1_pg_tbl)                                            // loads the address in a0
 	LI a1, ( PTE_V )           					        // sets the permission bits
-	li s10,0x10
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL2,sv39)                         // setup the PTE for level2
 	
 	LA (a0, rvtest_slvl2_pg_tbl)                                            // loads the address in a0
 	LI a1, ( PTE_V )           					        // sets the permission bits
-	li s10,0x11
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL1,sv39)                         // setup the PTE for level1
 								                // level0 PTE setup for pa (0x0900000000 -> 0x80000000000000)	
 	LI (a0, pa)                                                             // loads the PA address in a0
 	LI a1, ( PTE_D | PTE_A | PTE_X | PTE_V )               			// sets the permission bits
-	li s10,0x12
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL0,sv39)                         // setup the PTE for level0 for sv39
  										// level2 PTE setup for pa (0x0900001688 -> rvtest_data)
 	LA( a0,rvtest_data)							// loads the PA address in a0 
 	LI a1, ( PTE_D | PTE_A | PTE_W | PTE_R ) 				// sets the permission bits (PTE_V == 0)
-	li s10,0x13
 	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL0,sv39)                    // setup the PTE for level2 for sv39
 	
 # -------------------------Set the PTE for signature update-----------------
