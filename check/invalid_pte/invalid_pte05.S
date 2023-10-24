@@ -20,7 +20,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",check_satp_invalid_PTE,check_Umode_change_invalid_PTE,check_loadstore_fault_invalid_PTE,check_permission_and_level1_for_invalid_PTE_U)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",invalid_PTE05)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
