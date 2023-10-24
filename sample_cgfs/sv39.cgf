@@ -75,7 +75,7 @@ invalid_PTE03:
   val_comb:
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C9)): 0                   # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C6)): 0               # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -153,7 +153,7 @@ invalid_PTE06:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D6)): 0                   # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D6)): 0               # checks the PTE permission and level2 at which PTE is stored 
 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -229,7 +229,7 @@ invalid_PTE09:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                        # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C6)): 0                  # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C6)): 0              # checks the PTE permission and level2 at which PTE is stored 
 
 
 
@@ -306,7 +306,7 @@ invalid_PTE12:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                        # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D6)): 0                  # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D6)): 0              # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
