@@ -613,3 +613,153 @@ access_bit12:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
     (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000099)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+dirty_bit01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x047)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+dirty_bit02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x047)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+dirty_bit03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000047)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+dirty_bit04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x057)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+dirty_bit05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x057)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+dirty_bit06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000057)): 0               # checks the PTE permission and level2 at which PTE is stored 
