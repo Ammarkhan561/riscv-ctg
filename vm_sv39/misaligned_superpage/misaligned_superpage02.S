@@ -21,7 +21,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sv64)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",misaligned_superpage02)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -58,7 +58,7 @@ main:
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL2,sv39)                         // setup the PTE for level0 for sv39
  										// level2 PTE setup for pa (0x0900001000 -> rvtest_data)
 	LA( a0,rvtest_data)							// loads the PA address in a0 
-	LI a1, ( PTE_D | PTE_A | PTE_W | PTE_R | PTE_V ) 		// sets the permission bits 
+	LI a1, ( PTE_D | PTE_A | PTE_W | PTE_R | PTE_V ) 			// sets the permission bits 
 	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL2,sv39)                    // setup the PTE for level2 for sv39
 	
 # -------------------------Set the PTE for signature update-----------------

@@ -19,13 +19,17 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sv64)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",misaligned_superpage06)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
 
 main:
 
+j _start
+rvtest_data:									// rvtest_data region for RWX access(ppn1==0 and ppn0==0)
+	.word 0xdeadbeef
+_start:
 # -------------------------------------------------------------------------
 
 #ifdef rvtest_mtrap_routine							// Verification of existance of rvtest_mtrap_routine
@@ -117,11 +121,6 @@ vm_en:
 	RVTEST_SIGUPD(x13,a4)                                                   // Verification of virtualization disabled
 
 #endif
-
-j _start
-rvtest_data:									// rvtest_data region for RWX access(ppn1==0 and ppn0==0)
-	.word 0xdeadbeef
-_start:
 
  # -----------------------------------------------------------------------------
 
