@@ -763,3 +763,218 @@ dirty_bit06:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000057)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004C7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004D7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000000C7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage07:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+misaligned_superpage08:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000000D7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+                                                                                                # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
