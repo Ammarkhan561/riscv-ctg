@@ -995,12 +995,13 @@ mxr_set01:
 
     (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
     (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
 
-    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (rs2_val != 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault" 
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault" 
     (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C9)): 0                   # checks the PTE permission and level0 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1022,12 +1023,13 @@ mxr_set02:
 
     (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
     (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
 
-    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (rs2_val != 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault" 
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault" 
     (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C9)): 0                   # checks the PTE permission and level1 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1049,12 +1051,13 @@ mxr_set03:
 
     (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
     (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
 
-    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (rs2_val != 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"    
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault"    
     (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C9)): 0               # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1076,12 +1079,13 @@ mxr_set04:
 
     (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
     (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
 
-    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (rs2_val != 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault" 
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault" 
     (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D9)): 0                   # checks the PTE permission and level0 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1103,12 +1107,13 @@ mxr_set05:
 
     (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
     (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
 
-    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (rs2_val != 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault" 
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault" 
     (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D9)): 0                   # checks the PTE permission and level1 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1130,10 +1135,176 @@ mxr_set06:
 
     (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
     (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
+  
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault"    
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+mxr_unset01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
 
   val_comb:
 
-    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (rs2_val != 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"    
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C9)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+mxr_unset02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.   
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
+
+  val_comb:
+
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C9)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+mxr_unset03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
+  
+  val_comb:
+
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+mxr_unset04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
+
+  val_comb:
+
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D9)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+mxr_unset05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.   
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
+
+  val_comb:
+
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D9)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+mxr_unset06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
+  
+  val_comb:
+
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
     (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------

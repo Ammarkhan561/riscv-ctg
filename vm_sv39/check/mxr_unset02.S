@@ -1,10 +1,9 @@
 # ###############################################################################################
-# Verification Goal: Set pte.r=0 & pte.w=0 & pte.x=1 & s/mstatus.MXR=1 and test the read acces	#
-#		     for level 1 PTE in Supervisor mode,there should be no fault		#
+# Verification Goal: Set pte.r=0 & pte.w=0 & pte.x=1 & s/mstatus.MXR=0 and test the read acces	#
+#		     for level 1 PTE in Supervisor mode,Should raise load page fault.		#
 #												#
-# Description:       If PTE has only execute permission (pte.x = 1) and s/mstatus.MXR=1, then 	#
-#		     read access on that PTE should be successful without having explicit 	#
-#		     read permission (pte.r = 0).						#
+# Description:       If PTE has only execute permission (pte.x = 1) and s/mstatus.MXR=0, then 	#
+#		     read access on that PTE should raise load page fault exception.		#
 # ###############################################################################################
 
 #include "model_test.h"
@@ -20,7 +19,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",mxr_set02)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",mxr_unset02)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -97,7 +96,7 @@ _start:
 
 	sfence.vma                                                              // flush the TLB
 	li s7, MSTATUS_MXR                                                      // loads the value of MSTATUS_MXR
-        csrs mstatus,s7	                                                        // clear the mstatus.MXR = 1 
+        csrc mstatus,s7	                                                        // clear the mstatus.MXR = 0 
 	RVTEST_GOTO_LOWER_MODE	Smode		                                // Switching to S mode
 
 # -------------------------virtulization enabled----------------------------------
@@ -107,7 +106,7 @@ vm_en:
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
 	nop
 	LI (t0, va_data)                                                        
-	LREG x2, 0(t0)                                                          // test the load access  (should be successful)
+	LREG x2, 0(t0)                                                          // test the load access  (should raise exception)
         nop                                             
 	LI (a4, 0xbeef)
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
