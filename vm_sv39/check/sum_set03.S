@@ -1,10 +1,13 @@
-# ###############################################################################################
-# Verification Goal: Set pte.r=0 & pte.w=0 & pte.x=1 & s/mstatus.MXR=0 and test the read acces	#
-#		     for level 2 PTE in User mode,Should raise load page fault.			#
-#												#
-# Description:       If PTE has only execute permission (pte.x = 1) and s/mstatus.MXR=0, then 	#
-#		     read access on that PTE should raise load page fault exception.		#
-# ###############################################################################################
+# ###############################################################################################           
+# Verification Goal: Test the Read and write acces in Supervisor mode for Level1 PTE such that   #
+#                    (PTE.u=1 and mstatus.SUM=1), Read access and write access to the PTE should #
+#                     be successful.                                                             #
+#												 #														
+# Discription:       If PTE belongs to user mode i.e. its U permission bit is set (pte.u = 1)    #
+#                    and m/sstatus.SUM = 1, then RW access to that PTE in supervisor mode        #
+#                    would be successful but eXecute access would raise instruction page         #
+#                    fault exception in s-mode.                                                  #   
+# ###############################################################################################  
 
 #include "model_test.h"
 #include "arch_test.h"
@@ -19,7 +22,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",mxr_unset06)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sum_set03)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -58,11 +61,11 @@ _start:
 # -------------------------Set the PTE for level2 for sv39-----------------
 								                // level0 PTE setup for pa (0x0900000688 -> 0x80000000000000)	
 	LI (a0, pa)                                                             // loads the PA address in a0
-	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V )                        // sets the permission bits
+	LI a1, ( PTE_D | PTE_A | PTE_X | PTE_V )                 		// sets the permission bits
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL2,sv39)                         // setup the PTE for level0 for sv39
- 										// level2 PTE setup for pa (0x0980000688 -> rvtest_data)
+ 										// level2 PTE setup for pa (0x0900001000 -> rvtest_data)
 	LA( a0,rvtest_data)							// loads the PA address in a0 
-	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V ) 		        // sets the permission bits (PTE_R & PTE_W == 0)
+	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_W | PTE_R | PTE_V) 		// sets the permission bits 
 	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL2,sv39)                    // setup the PTE for level2 for sv39
 	
 # -------------------------Set the PTE for signature update-----------------
@@ -76,7 +79,7 @@ _start:
 	PTE_SETUP_RV64(a0, a1, t0, t1, sig_data, LEVEL1,sv39)                   // setup the PTE for level1 
                                                                                 // PTE setup for 0x0900020118 -> rvtest_sig_begin
 	la a0, rvtest_sig_begin   						// Physical address of signature area
-	li a1, ( PTE_D | PTE_A | PTE_U | PTE_R | PTE_W | PTE_V )  	        // sets the permissions bits 
+	li a1, ( PTE_D | PTE_A | PTE_U | PTE_R | PTE_W | PTE_V )    		// sets the permissions bits 
 	PTE_SETUP_RV64(a0, a1, t0, t1, sig_data, LEVEL0,sv39) 			// PTE Setup for signature area address at pgtbl0
 	
 	LI (t0, sig_data)                                                       // loads the value of the sig_data
@@ -90,15 +93,16 @@ _start:
 
 # -------------------------Save area logic----------------------------------
 
-	SIGNATURE_AREA (CODE, va, pa,user)                                      // signature area for code 
-	SIGNATURE_AREA (DATA, va_data,rvtest_data,user)                         // signature area for data 
-	SIGNATURE_AREA (SIG, sig_data, signature_x13_1,user)                    // signature area for signature
-	SIGNATURE_AREA (VMEM, va_data, rvtest_data,user)                        // signature area for vmem 
+	SIGNATURE_AREA (CODE, va, pa)						// signature area for code 
+	SIGNATURE_AREA (DATA, va_data,rvtest_data)				// signature area for data 
+	SIGNATURE_AREA (SIG, sig_data, signature_x13_1)				// signature area for signature 
+	SIGNATURE_AREA (VMEM, va_data, rvtest_data)				// signature area for vmem
 
 	sfence.vma                                                              // flush the TLB
-	li s7, MSTATUS_MXR                                                      // loads the value of MSTATUS_MXR
-        csrc mstatus,s7	                                                        // clear the mstatus.MXR = 0 
-	RVTEST_GOTO_LOWER_MODE	Umode		                                // Switching to U mode
+        LI (s7, MSTATUS_SUM)                                                    // loads the value of MSTATUS_SUM
+        csrs mstatus,s7                                                         // set the mstatus.SUM = 1         
+
+        RVTEST_GOTO_LOWER_MODE	Smode		                                // Switching to S mode
 
 # -------------------------virtulization enabled----------------------------------
 
@@ -107,8 +111,10 @@ vm_en:
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
 	nop
 	LI (t0, va_data)                                                        
-	LREG x2, 0(t0)                                                          // test the load access  (should raise exception)
+	LREG x2, 0(t0)                                                          // test the load access  (should raise an exception)
         nop                                             
+	SREG x2, 0(t0)                                                          // test the store access (should raise an exception)
+	nop
 	LI (a4, 0xbeef)
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
         nop

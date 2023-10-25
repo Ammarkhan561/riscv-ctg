@@ -1,10 +1,11 @@
-# ###############################################################################################
-# Verification Goal: Set pte.r=0 & pte.w=0 & pte.x=1 & s/mstatus.MXR=0 and test the read acces	#
-#		     for level 2 PTE in User mode,Should raise load page fault.			#
-#												#
-# Description:       If PTE has only execute permission (pte.x = 1) and s/mstatus.MXR=0, then 	#
-#		     read access on that PTE should raise load page fault exception.		#
-# ###############################################################################################
+# ######################################################################################################
+#  Verification Goal: Set PTE.U = 0 and test the Read Acces and Write Access in User mode for          #
+#                     Level 2 Should raise a load page fault for read access and Store AMO fault       #
+#                     for write access                                                                 #
+#                                                                                                      #
+# Description:       If PTE does not have U bit (pte.U=0) permission, then accessing it in User mode   #
+#                    would raise page fault exception of the corresponding access type.                #
+# #################################################################################################### #
 
 #include "model_test.h"
 #include "arch_test.h"
@@ -19,7 +20,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",mxr_unset06)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sv64)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -31,6 +32,7 @@ j _start
 rvtest_data:									// rvtest_data region for RWX access(ppn1==0 and ppn0==0)
 	.dword 0xFACECAFEBEEDCAFE
 _start:
+
 
 # -------------------------------------------------------------------------
 
@@ -60,10 +62,10 @@ _start:
 	LI (a0, pa)                                                             // loads the PA address in a0
 	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V )                        // sets the permission bits
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL2,sv39)                         // setup the PTE for level0 for sv39
- 										// level2 PTE setup for pa (0x0980000688 -> rvtest_data)
+ 										// level2 PTE setup for pa (0x0900001000 -> rvtest_data)
 	LA( a0,rvtest_data)							// loads the PA address in a0 
-	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V ) 		        // sets the permission bits (PTE_R & PTE_W == 0)
-	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL2,sv39)                    // setup the PTE for level2 for sv39
+	LI a1, ( PTE_D | PTE_A | PTE_W | PTE_R | PTE_V ) 	  	        // sets the permission bits 
+        PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL2,sv39)                    // setup the PTE for level2 for sv39
 	
 # -------------------------Set the PTE for signature update-----------------
 
@@ -96,8 +98,6 @@ _start:
 	SIGNATURE_AREA (VMEM, va_data, rvtest_data,user)                        // signature area for vmem 
 
 	sfence.vma                                                              // flush the TLB
-	li s7, MSTATUS_MXR                                                      // loads the value of MSTATUS_MXR
-        csrc mstatus,s7	                                                        // clear the mstatus.MXR = 0 
 	RVTEST_GOTO_LOWER_MODE	Umode		                                // Switching to U mode
 
 # -------------------------virtulization enabled----------------------------------
@@ -107,8 +107,10 @@ vm_en:
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
 	nop
 	LI (t0, va_data)                                                        
-	LREG x2, 0(t0)                                                          // test the load access  (should raise exception)
+	LREG x2, 0(t0)                                                          // test the load access  (should raise an exception)
         nop                                             
+	SREG x2, 0(t0)                                                          // test the store access (should raise an exception)
+	nop
 	LI (a4, 0xbeef)
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
         nop
