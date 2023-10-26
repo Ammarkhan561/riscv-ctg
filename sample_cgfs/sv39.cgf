@@ -17,8 +17,8 @@ invalid_PTE01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -43,8 +43,8 @@ invalid_PTE02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -69,8 +69,8 @@ invalid_PTE03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -92,11 +92,12 @@ invalid_PTE04:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -118,11 +119,12 @@ invalid_PTE05:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -144,11 +146,12 @@ invalid_PTE06:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -174,8 +177,8 @@ invalid_PTE07:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -199,8 +202,8 @@ invalid_PTE08:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -224,8 +227,8 @@ invalid_PTE09:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -246,11 +249,12 @@ invalid_PTE10:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -271,11 +275,12 @@ invalid_PTE11:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -296,11 +301,12 @@ invalid_PTE12:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -324,8 +330,8 @@ access_bit01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -350,8 +356,8 @@ access_bit02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -376,8 +382,8 @@ access_bit03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -399,11 +405,12 @@ access_bit04:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -425,11 +432,12 @@ access_bit05:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -451,11 +459,12 @@ access_bit06:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -480,8 +489,8 @@ access_bit07:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -505,8 +514,8 @@ access_bit08:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -530,8 +539,8 @@ access_bit09:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -553,11 +562,12 @@ access_bit10:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -578,11 +588,12 @@ access_bit11:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -603,11 +614,12 @@ access_bit12:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -631,8 +643,8 @@ dirty_bit01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -656,8 +668,8 @@ dirty_bit02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -681,8 +693,8 @@ dirty_bit03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
@@ -703,11 +715,12 @@ dirty_bit04:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -728,11 +741,12 @@ dirty_bit05:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -753,11 +767,12 @@ dirty_bit06:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
@@ -781,14 +796,14 @@ misaligned_superpage01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C7) and (((rs2_val &  0x7FC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -808,14 +823,14 @@ misaligned_superpage02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004C7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004C7) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -832,17 +847,18 @@ misaligned_superpage03:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D7) and (((rs2_val &  0x7FC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -859,17 +875,18 @@ misaligned_superpage04:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004D7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004D7) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -889,13 +906,13 @@ misaligned_superpage05:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C9) and (((rs2_val &  0x7FC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -915,13 +932,13 @@ misaligned_superpage06:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
 
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000000C7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004C9) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -938,16 +955,17 @@ misaligned_superpage07:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
 
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D7) and (((rs2_val &  0x7FC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D9) and (((rs2_val &  0x7FC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that ppn0!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -964,16 +982,17 @@ misaligned_superpage08:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60 )       == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000000D7) and (((rs2_val &  0xFFFFC0) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004D9) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
                                                                                                 # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -993,8 +1012,8 @@ mxr_set01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
@@ -1021,8 +1040,8 @@ mxr_set02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
@@ -1049,8 +1068,8 @@ mxr_set03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
@@ -1074,11 +1093,12 @@ mxr_set04:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
@@ -1102,11 +1122,12 @@ mxr_set05:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
 
   val_comb:
@@ -1130,11 +1151,12 @@ mxr_set06:
     csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
     csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
     sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     (mstatus & 0x80000) == 0x80000: 0                                                           # checks the mstatus.MXR == 1  
   
   val_comb:
@@ -1162,8 +1184,8 @@ mxr_unset01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
 
   val_comb:
@@ -1189,8 +1211,8 @@ mxr_unset02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
 
   val_comb:
@@ -1216,8 +1238,8 @@ mxr_unset03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
   
   val_comb:
@@ -1243,8 +1265,8 @@ mxr_unset04:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
 
   val_comb:
@@ -1270,8 +1292,8 @@ mxr_unset05:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
 
   val_comb:
@@ -1297,8 +1319,8 @@ mxr_unset06:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0000 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
     (mstatus & 0x80000) == 0x0    : 0                                                           # checks the mstatus.MXR == 0  
   
   val_comb:
@@ -1323,8 +1345,8 @@ sum_set01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x40000: 0                                                           # Checks that mstatus.SUM == 1
 
   val_comb:
@@ -1351,8 +1373,8 @@ sum_set02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x40000: 0                                                           # Checks that mstatus.SUM == 1
 
   val_comb:
@@ -1379,8 +1401,8 @@ sum_set03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x40000: 0                                                           # Checks that mstatus.SUM == 1
 
   val_comb:
@@ -1407,8 +1429,8 @@ sum_set04:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x40000: 0                                                           # Checks that mstatus.SUM == 1
     
   val_comb:
@@ -1433,8 +1455,8 @@ sum_set05:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x40000: 0                                                           # Checks that mstatus.SUM == 1
 
   val_comb:
@@ -1459,8 +1481,8 @@ sum_set06:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x40000: 0                                                           # Checks that mstatus.SUM == 1
 
   val_comb:
@@ -1485,8 +1507,8 @@ sum_unset01:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x0    : 0                                                           # Checks that mstatus.SUM == 0
 
   val_comb:
@@ -1512,8 +1534,8 @@ sum_unset02:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x0    : 0                                                           # Checks that mstatus.SUM == 0
 
   val_comb:
@@ -1539,8 +1561,8 @@ sum_unset03:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x0    : 0                                                           # Checks that mstatus.SUM == 0
 
   val_comb:
@@ -1566,8 +1588,8 @@ sum_unset04:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x0    : 0                                                           # Checks that mstatus.SUM == 0
 
   val_comb:
@@ -1592,8 +1614,8 @@ sum_unset05:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x0    : 0                                                           # Checks that mstatus.SUM == 0
 
   val_comb:
@@ -1618,8 +1640,8 @@ sum_unset06:
 
   csr_comb:
 
-    (satp >> 60)        == 0x8    : 0                                                           # Check if the top 4 bits of the "satp" register indicate sv39 mode.
-    (mstatus & 0x1800)  == 0x0800 : 0                                                           # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
     (mstatus & 0x40000) == 0x0    : 0                                                           # Checks that mstatus.SUM == 0
 
   val_comb:
@@ -1629,3 +1651,554 @@ sum_unset06:
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
+
+ubit_set01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_set02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_set03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D1)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_set04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_set05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D1)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_set06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_unset01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_unset02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_unset03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_unset04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_unset05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+ubit_unset06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C1)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C1)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C1)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode07:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode08:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+Smode_page_in_Smode09:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+
+
