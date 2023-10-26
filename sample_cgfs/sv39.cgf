@@ -2440,3 +2440,85 @@ reserved_rwx09:
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
+
+nonleaf_pte01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C1)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+nonleaf_pte02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
+    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+nonleaf_pte03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
