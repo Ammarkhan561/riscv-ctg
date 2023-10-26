@@ -1,13 +1,10 @@
-# ############################################################################################ #
-# Verification Goal: Test the the RW  Access in Supervisor mode for PTE setuped for LEVEL 0    #
-#		     RWX should raise a page fault exception of the corresponding access type  #
-# 		     (PTE.r = 0 & PTE.w = 0).			                               #
-#                                                                                              #
-# Discription: 	     If PTE belongs to supervisor mode i.e. its U permission bit is clear      #
-#                    (pte.u = 0),then accessing that PTE in supervisor mode should be          #
-#                    successful if the corresponding (r,w,x) permission of PTE is granted.     #
-#                    Otherwise raise a page fault exception of the corresponding access type   #
-# ############################################################################################ #
+# ###############################################################################################
+# Verification Goal: Read and Write Access for the reserved RWX permission of level 0 PTE in    #
+#                    Supervisor mode should raise a load page fault for read access and         #
+#                    Store AMO fault for write access                                           #
+# Description:       If PTE has reserved RWX encodings (pte.w=1 & pte.r=0), then accessing   	#
+#                    it would raise page fault exception of the corresponding access type.   	#
+# ############################################################################################### 
 
 #include "model_test.h"
 #include "arch_test.h"
@@ -22,7 +19,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",Smode_page_in_Smode04)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",reserved_rwx01)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -73,7 +70,7 @@ _start:
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL0,sv39)                         // setup the PTE for level0 for sv39
  										// level2 PTE setup for pa (0x0900001688 -> rvtest_data)
 	LA( a0,rvtest_data)							// loads the PA address in a0 
-	LI a1, ( PTE_D | PTE_A | PTE_V ) 					// sets the permission bits (PTE_U & PTE_R & PTE_W == 0)
+	LI a1, ( PTE_D | PTE_A | PTE_W | PTE_V )        			// sets the permission bits (PTE_R == 0 & PTE_W == 1)
 	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL0,sv39)                    // setup the PTE for level2 for sv39
 	
 # -------------------------Set the PTE for signature update-----------------
@@ -115,7 +112,6 @@ vm_en:
 	LI (a4, 0xbeef)
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
         nop
-
 
 # -------------------------virtulization disabled----------------------------------
 
