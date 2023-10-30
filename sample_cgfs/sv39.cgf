@@ -2605,3 +2605,260 @@ pmp_pte03:
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+    (rs1_val >= (pmpaddr3 << 2)) and (rs1_val <= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr3, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+    (rs1_val >= (pmpaddr2 << 2)) and (rs1_val <= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000D7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (rs1_val >= (pmpaddr4 << 2)) and (rs1_val <= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte07:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+    (rs1_val >= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr3, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte08:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+    (rs1_val >= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte09:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000C7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (rs1_val >= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+pmp_pte10:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+    (rs1_val >= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr3, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte11:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+    (rs1_val >= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pte12:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000D7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (rs1_val >= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
