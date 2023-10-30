@@ -2862,3 +2862,207 @@ pmp_pte12:
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pa01:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    ld          : 0 
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+   
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+    (rs1_val == 0x0900001688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
+    # checks that the value in rs1 equals to 0x0900001688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
+    # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
+    # instr in the "vm_en" label during virtualization 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pa02:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.    
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    ld          : 0 
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+   
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+    (rs1_val == 0x0901000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
+    # checks that the value in rs1 equals to 0x0901000688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
+    # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
+    # instr in the "vm_en" label during virtualization 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pa03:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    ld          : 0 
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+   
+    ((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000C7): 0                   # checks the PTE permission and level2 at which PTE is stored 
+    (rs1_val == 0x0980000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
+    # checks that the value in rs1 equals to 0x0980000688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
+    # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
+    # instr in the "vm_en" label during virtualization 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pa04:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    ld          : 0 
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+   
+   # (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
+    (rs1_val == 0x0900001688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
+    # checks that the value in rs1 equals to 0x0900001688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
+    # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
+    # instr in the "vm_en" label during virtualization 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pa05:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    ld          : 0 
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+   
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+
+    (rs1_val == 0x0901000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
+    # checks that the value in rs1 equals to 0x0901000688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
+    # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
+    # instr in the "vm_en" label during virtualization 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+pmp_pa06:
+
+  config:
+
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True;
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.  
+    sd          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+    ld          : 0 
+
+  csr_comb:
+
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+  val_comb:
+
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
+   
+    ((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000D7): 0                   # checks the PTE permission and level2 at which PTE is stored 
+
+    (rs1_val == 0x0980000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
+    # checks that the value in rs1 equals to 0x0980000688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
+    # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
+    # instr in the "vm_en" label during virtualization 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
