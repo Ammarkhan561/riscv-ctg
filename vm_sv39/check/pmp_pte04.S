@@ -1,6 +1,6 @@
 # #################################################################################################
 # Verification Goal: Remove read and write PMP permission of PTE address in pmpcfg and test the   #
-# 		     Read Acces and Write Access in Supervisor mode for Level 0 PTE Should	  #	
+# 		     Read Acces and Write Access in User mode for Level 0 PTE Should	          #	
 # 		     raise a load page fault for read access and Store AMO fault for write access #
 #                    		                                                                  #
 # Description:       If PTE does not have (r,w,x) PMP permissions, then accessing it would        #
@@ -20,7 +20,7 @@ RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
 
-    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",pmp_pte01)
+    RVTEST_CASE(1,"//check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sv64)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
 
@@ -116,17 +116,17 @@ _start:
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL1,sv39)                         // setup the PTE for level1
 								                // level0 PTE setup for pa (0x090000A000 -> 0x80000000000000)	
 	LI (a0, pa)                                                             // loads the PA address in a0
-	LI a1, ( PTE_D | PTE_A | PTE_X | PTE_V )               			// sets the permission bits
+	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V )               		// sets the permission bits
 	PTE_SETUP_RV64(a0, a1, t0, t1, va, LEVEL0,sv39)                         // setup the PTE for level0 for sv39
- 										// level0 PTE setup for pa (0x0900000688 -> rvtest_data)
+ 										// level2 PTE setup for pa (0x0900000688 -> rvtest_data)
 	LA( a0,rvtest_data)							// loads the PA address in a0 
-	LI a1, ( PTE_D | PTE_A | PTE_W | PTE_R | PTE_V ) 			// sets the permission bits 
-	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL0,sv39)                    // setup the PTE for level0 for sv39
+	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_W | PTE_R | PTE_V ) 		// sets the permission bits 
+	PTE_SETUP_RV64(a0, a1, t0, t1, va_data, LEVEL0,sv39)                    // setup the PTE for level2 for sv39
 	
 # -------------------------Set the PTE for signature update-----------------
                                                                                 // PTE setup for 0x090000B118 -> rvtest_sig_begin
 	la a0, rvtest_sig_begin   						// Physical address of signature area
-	li a1, ( PTE_D | PTE_A | PTE_R | PTE_W | PTE_V )                	// sets the permissions bits 
+	li a1, ( PTE_D | PTE_A | PTE_U | PTE_R | PTE_W | PTE_V )                // sets the permissions bits 
 	PTE_SETUP_RV64(a0, a1, t0, t1, sig_data, LEVEL0,sv39) 			// PTE Setup for signature area address at pgtbl0
 	
 	LI (t0, sig_data)                                                       // loads the value of the sig_data
@@ -140,13 +140,13 @@ _start:
 
 # -------------------------Save area logic----------------------------------
 
-	SIGNATURE_AREA (CODE, va, pa)						// signature area for code 
-	SIGNATURE_AREA (DATA, va_data,rvtest_data)				// signature area for data 
-	SIGNATURE_AREA (SIG, sig_data, signature_x13_1)				// signature area for signature 
-	SIGNATURE_AREA (VMEM, va_data, rvtest_data)				// signature area for vmem
+	SIGNATURE_AREA (CODE, va, pa,user)                                      // signature area for code 
+	SIGNATURE_AREA (DATA, va_data,rvtest_data,user)                         // signature area for data 
+	SIGNATURE_AREA (SIG, sig_data, signature_x13_1,user)                    // signature area for signature
+	SIGNATURE_AREA (VMEM, va_data, rvtest_data,user)                        // signature area for vmem 
 
 	sfence.vma                                                              // flush the TLB
-	RVTEST_GOTO_LOWER_MODE	Smode		                                // Switching to S mode
+	RVTEST_GOTO_LOWER_MODE	Umode		                                // Switching to U mode
 
 # -------------------------virtulization enabled----------------------------------
 

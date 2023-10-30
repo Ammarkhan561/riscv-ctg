@@ -2539,11 +2539,12 @@ pmp_pte01:
 
   val_comb:
 
-    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
     (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level0 at which PTE is stored 
     (rs1_val >= (pmpaddr3 << 2)) and (rs1_val <= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 0
-
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr3, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
 
@@ -2566,9 +2567,12 @@ pmp_pte02:
 
   val_comb:
 
-    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C6)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 0                   # checks the PTE permission and level1 at which PTE is stored 
+    (rs1_val >= (pmpaddr2 << 2)) and (rs1_val <= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2592,9 +2596,12 @@ pmp_pte03:
 
   val_comb:
 
-    (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C6)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
+    (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
+    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000C7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (rs1_val >= (pmpaddr4 << 2)) and (rs1_val <= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
+                                                                                                # Check if rs1_val falls within the range specified by pmpaddr2, and if the
+                                                                                                # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
