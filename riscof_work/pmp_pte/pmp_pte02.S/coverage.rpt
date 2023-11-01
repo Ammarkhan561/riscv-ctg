@@ -1,0 +1,21 @@
+---
+pmp_pte02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 32
+    csrrw: 34
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val >= (pmpaddr2 << 2)) and (rs1_val <= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 9/9

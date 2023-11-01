@@ -1,6 +1,6 @@
-# database generated on 2023-10-17 11:34 GMT
+# database generated on 2023-11-01 10:21 GMT
 !!omap
-- /home/ammar/Documents/riscv-ctg/check/1.S:
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode01.S:
     commit_id: '-'
     isa:
     - RV64I_Zicsr
@@ -14,4 +14,1684 @@
         - def rvtest_strap_routine=True
         - def TEST_CASE_1=True
         coverage_labels:
-        - sv39
+        - Smode_page_in_Smode01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode07.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode07
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode08.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode08
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/Smode_pages_in_Smode/Smode_pages_in_Smode09.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - Smode_page_in_Smode09
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit07.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit07
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit08.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit08
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit09.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit09
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit10.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit10
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit11.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit11
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/access_bit/access_bit12.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - access_bit12
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/dirty_bit/dirty_bit01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - dirty_bit01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/dirty_bit/dirty_bit02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - dirty_bit02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/dirty_bit/dirty_bit03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - dirty_bit03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/dirty_bit/dirty_bit04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - dirty_bit04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/dirty_bit/dirty_bit05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - dirty_bit05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/dirty_bit/dirty_bit06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - dirty_bit06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte07.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE07
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte08.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE08
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte09.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE09
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte10.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE10
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte11.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE11
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/invalid_pte/invalid_pte12.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - invalid_PTE12
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage07.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage07
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/misaligned_superpage/misaligned_superpage08.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - misaligned_superpage08
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_set/mxr_set01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_set01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_set/mxr_set02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_set02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_set/mxr_set03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_set03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_set/mxr_set04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_set04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_set/mxr_set05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_set05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_set/mxr_set06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_set06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_unset/mxr_unset01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_unset01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_unset/mxr_unset02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_unset02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_unset/mxr_unset03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_unset03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_unset/mxr_unset04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_unset04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_unset/mxr_unset05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_unset05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/mxr_unset/mxr_unset06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - mxr_unset06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/non_leaf_pte/non_leaf_pte01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - nonleaf_pte01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/non_leaf_pte/non_leaf_pte02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - nonleaf_pte02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/non_leaf_pte/non_leaf_pte03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - nonleaf_pte03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_physical_address/pmp_pa01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pa01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_physical_address/pmp_pa02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pa02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_physical_address/pmp_pa03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pa03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_physical_address/pmp_pa04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pa04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_physical_address/pmp_pa05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pa05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_physical_address/pmp_pa06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pa06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte07.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte07
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte08.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte08
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte09.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte09
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte10.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte10
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte11.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte11
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/pmp_pte/pmp_pte12.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - pmp_pte12
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx07.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx07
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx08.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx08
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/reserved_rwx/reserved_rwx09.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - reserved_rwx09
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_set/sum_set01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_set01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_set/sum_set02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_set02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_set/sum_set03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_set03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_set/sum_set04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_set04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_set/sum_set05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_set05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_set/sum_set06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_set06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_unset/sum_unset01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_unset01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_unset/sum_unset02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_unset02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_unset/sum_unset03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_unset03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_unset/sum_unset04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_unset04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_unset/sum_unset05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_unset05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/sum_unset/sum_unset06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - sum_unset06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_set/ubit_set01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_set01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_set/ubit_set02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_set02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_set/ubit_set03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_set03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_set/ubit_set04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_set04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_set/ubit_set05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_set05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_set/ubit_set06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_set06
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_unset/ubit_unset01.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_unset01
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_unset/ubit_unset02.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_unset02
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_unset/ubit_unset03.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_unset03
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_unset/ubit_unset04.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_unset04
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_unset/ubit_unset05.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_unset05
+- /home/ammar/Documents/my-github/riscv-ctg/vm_sv39/ubit_unset/ubit_unset06.S:
+    commit_id: '-'
+    isa:
+    - RV64I_Zicsr
+    parts: !!omap
+    - '1':
+        check:
+        - check ISA:=regex(.*64.*)
+        - check ISA:=regex(.*I.*Zicsr.*)
+        define:
+        - def rvtest_mtrap_routine=True
+        - def rvtest_strap_routine=True
+        - def TEST_CASE_1=True
+        coverage_labels:
+        - ubit_unset06

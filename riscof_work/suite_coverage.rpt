@@ -1,3 +1,399 @@
+Smode_page_in_Smode01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 15
+    csrrw: 22
+    sd: 40
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val != 0xD): 77
+    (rs2_val != 0xF): 77
+    coverage: 3/3
+  total_coverage: 8/8
+Smode_page_in_Smode02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 15
+    csrrw: 22
+    sd: 40
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val != 0xD): 77
+    (rs2_val != 0xF): 77
+    coverage: 3/3
+  total_coverage: 8/8
+Smode_page_in_Smode03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 15
+    csrrw: 22
+    sd: 40
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs2_val != 0xD): 77
+    (rs2_val != 0xF): 77
+    coverage: 3/3
+  total_coverage: 8/8
+Smode_page_in_Smode04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C1)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+Smode_page_in_Smode05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C1)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+Smode_page_in_Smode06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C1)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+Smode_page_in_Smode07:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+Smode_page_in_Smode08:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+Smode_page_in_Smode09:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+access_bit01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x087)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+access_bit02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x087)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+access_bit03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x087)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+access_bit04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x097)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+access_bit05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x097)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+access_bit06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x097)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+access_bit07:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x089)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+access_bit08:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x089)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+access_bit09:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x089)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+access_bit10:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x099)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+access_bit11:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x099)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+access_bit12:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x099)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
 datasets:
   all_fregs:
     f0: 0
@@ -431,12 +827,124 @@ datasets:
   sfmt_op_comb:
     rs1 != rs2: 0
     rs1 == rs2: 0
-sv39:
+dirty_bit01:
   config:
-  - check ISA:=regex(.*I.*Zicsr.*)
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
   csr_comb:
-    (mstatus & 0x1800) == 0x0800: 11
-    (satp >> 60)       == 0x8: 15
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 20
+    csrrw: 25
+    sd: 52
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x047)): 1
+    (rs2_val == 0xF): 1
+    coverage: 2/2
+  total_coverage: 7/7
+dirty_bit02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 20
+    csrrw: 25
+    sd: 52
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x047)): 1
+    (rs2_val == 0xF): 1
+    coverage: 2/2
+  total_coverage: 7/7
+dirty_bit03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 20
+    csrrw: 25
+    sd: 52
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x047)) if rs2_val is not None else None: 1
+    (rs2_val == 0xF): 1
+    coverage: 2/2
+  total_coverage: 7/7
+dirty_bit04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 19
+    csrrw: 25
+    sd: 56
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x057)): 1
+    (rs2_val == 0xF): 1
+    coverage: 2/2
+  total_coverage: 8/8
+dirty_bit05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 19
+    csrrw: 25
+    sd: 56
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x057)): 1
+    (rs2_val == 0xF): 1
+    coverage: 2/2
+  total_coverage: 8/8
+dirty_bit06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 19
+    csrrw: 25
+    sd: 56
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x057)) if rs2_val is not None else None: 1
+    (rs2_val == 0xF): 1
+    coverage: 2/2
+  total_coverage: 8/8
+invalid_PTE01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
     coverage: 2/2
   mnemonics:
     csrrs: 25
@@ -444,6 +952,1707 @@ sv39:
     sd: 64
     coverage: 3/3
   val_comb:
-    (rs2_val == 0xF) or (rs2_val == 0xD): 2
-    coverage: 1/1
-  total_coverage: 6/6
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C6)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+invalid_PTE02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C6)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+invalid_PTE03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C6)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+invalid_PTE04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D6)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+invalid_PTE05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D6)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+invalid_PTE06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D6)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+invalid_PTE07:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C6)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+invalid_PTE08:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C6)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+invalid_PTE09:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C6)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+invalid_PTE10:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D6)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+invalid_PTE11:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D6)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+invalid_PTE12:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D6)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+misaligned_superpage01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C7) and (((rs2_val &  0x7FC00) != 0x0))): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+misaligned_superpage02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    ? (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4C7) and (((rs2_val
+      &  0xFFFFC00) != 0x0))) if rs2_val is not None else None
+    : 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+misaligned_superpage03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D7) and (((rs2_val &  0x7FC00) != 0x0))): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+misaligned_superpage04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    ? (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4D7) and (((rs2_val
+      &  0xFFFFC00) != 0x0))) if rs2_val is not None else None
+    : 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+misaligned_superpage05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0C9) and (((rs2_val &  0x7FC00) != 0x0))): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+misaligned_superpage06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    ? (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4C9) and (((rs2_val
+      &  0xFFFFC00) != 0x0))) if rs2_val is not None else None
+    : 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 7/7
+misaligned_superpage07:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0x0FF) == 0x0D9) and (((rs2_val &  0x7FC00) != 0x0))): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+misaligned_superpage08:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    ? (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4D9) and (((rs2_val
+      &  0xFFFFC00) != 0x0))) if rs2_val is not None else None
+    : 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+mxr_set01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x80000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 16
+    csrrw: 22
+    sd: 39
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C9)): 2
+    (rs2_val != 0xC): 77
+    (rs2_val != 0xD): 77
+    (rs2_val != 0xF): 77
+    coverage: 4/4
+  total_coverage: 10/10
+mxr_set02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x80000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 16
+    csrrw: 22
+    sd: 39
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C9)): 2
+    (rs2_val != 0xC): 77
+    (rs2_val != 0xD): 77
+    (rs2_val != 0xF): 77
+    coverage: 4/4
+  total_coverage: 10/10
+mxr_set03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x80000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 16
+    csrrw: 22
+    sd: 39
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C9)) if rs2_val is not None else None: 2
+    (rs2_val != 0xC): 77
+    (rs2_val != 0xD): 77
+    (rs2_val != 0xF): 77
+    coverage: 4/4
+  total_coverage: 10/10
+mxr_set04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x80000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 1
+    csrrs: 15
+    csrrw: 22
+    sd: 43
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D9)): 2
+    (rs2_val != 0xC): 81
+    (rs2_val != 0xD): 81
+    (rs2_val != 0xF): 81
+    coverage: 4/4
+  total_coverage: 11/11
+mxr_set05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x80000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 1
+    csrrs: 15
+    csrrw: 22
+    sd: 43
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D9)): 2
+    (rs2_val != 0xC): 81
+    (rs2_val != 0xD): 81
+    (rs2_val != 0xF): 81
+    coverage: 4/4
+  total_coverage: 11/11
+mxr_set06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x80000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 1
+    csrrs: 15
+    csrrw: 22
+    sd: 43
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D9)) if rs2_val is not None else None: 2
+    (rs2_val != 0xC): 81
+    (rs2_val != 0xD): 81
+    (rs2_val != 0xF): 81
+    coverage: 4/4
+  total_coverage: 11/11
+mxr_unset01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x0: 28
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 2
+    csrrs: 20
+    csrrw: 25
+    sd: 51
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C9)): 2
+    (rs2_val == 0xD): 1
+    coverage: 2/2
+  total_coverage: 9/9
+mxr_unset02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x0: 28
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 2
+    csrrs: 20
+    csrrw: 25
+    sd: 51
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C9)): 2
+    (rs2_val == 0xD): 1
+    coverage: 2/2
+  total_coverage: 9/9
+mxr_unset03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x0: 28
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 2
+    csrrs: 20
+    csrrw: 25
+    sd: 51
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C9)) if rs2_val is not None else None: 2
+    (rs2_val == 0xD): 1
+    coverage: 2/2
+  total_coverage: 9/9
+mxr_unset04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x0: 27
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 2
+    csrrs: 19
+    csrrw: 25
+    sd: 55
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D9)): 2
+    (rs2_val == 0xD): 1
+    coverage: 2/2
+  total_coverage: 9/9
+mxr_unset05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x0: 27
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 2
+    csrrs: 19
+    csrrw: 25
+    sd: 55
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D9)): 2
+    (rs2_val == 0xD): 1
+    coverage: 2/2
+  total_coverage: 9/9
+mxr_unset06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x80000) == 0x0: 27
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrc: 2
+    csrrs: 19
+    csrrw: 25
+    sd: 55
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D9)) if rs2_val is not None else None: 2
+    (rs2_val == 0xD): 1
+    coverage: 2/2
+  total_coverage: 9/9
+nonleaf_pte01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C1)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+nonleaf_pte02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+nonleaf_pte03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 2
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+pmp_pa01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 30
+    csrrw: 34
+    ld: 97
+    sd: 76
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val == 0x0900001688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 2
+    (rs2_val == 0x1): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 5/5
+  total_coverage: 11/11
+pmp_pa02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 30
+    csrrw: 34
+    ld: 97
+    sd: 76
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val == 0x0901000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 2
+    (rs2_val == 0x1): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 5/5
+  total_coverage: 11/11
+pmp_pa03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 30
+    csrrw: 34
+    ld: 97
+    sd: 76
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs1_val == 0x0980000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 2
+    (rs2_val == 0x1): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 5/5
+  total_coverage: 11/11
+pmp_pa04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 29
+    csrrw: 34
+    ld: 97
+    sd: 80
+    coverage: 5/5
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs1_val == 0x0900001688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 2
+    (rs2_val == 0x1): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 5/5
+  total_coverage: 12/12
+pmp_pa05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 29
+    csrrw: 34
+    ld: 97
+    sd: 80
+    coverage: 5/5
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs1_val == 0x0901000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 2
+    (rs2_val == 0x1): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 5/5
+  total_coverage: 12/12
+pmp_pa06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 29
+    csrrw: 34
+    ld: 97
+    sd: 80
+    coverage: 5/5
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs1_val == 0x0980000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 2
+    (rs2_val == 0x1): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 5/5
+  total_coverage: 12/12
+pmp_pte01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 32
+    csrrw: 34
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val >= (pmpaddr3 << 2)) and (rs1_val <= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 9/9
+pmp_pte02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 32
+    csrrw: 34
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val >= (pmpaddr2 << 2)) and (rs1_val <= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 9/9
+pmp_pte03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 32
+    csrrw: 34
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs1_val >= (pmpaddr4 << 2)) and (rs1_val <= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 9/9
+pmp_pte04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 31
+    csrrw: 34
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs1_val >= (pmpaddr3 << 2)) and (rs1_val <= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 10/10
+pmp_pte05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 31
+    csrrw: 34
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs1_val >= (pmpaddr2 << 2)) and (rs1_val <= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 10/10
+pmp_pte06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 31
+    csrrw: 34
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs1_val >= (pmpaddr4 << 2)) and (rs1_val <= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 1
+    (rs2_val == 0x5): 1
+    (rs2_val == 0x7): 1
+    coverage: 4/4
+  total_coverage: 10/10
+pmp_pte07:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 61
+    csrrw: 50
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val >= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 37
+    (rs2_val == 0x1): 9
+    coverage: 3/3
+  total_coverage: 8/8
+pmp_pte08:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 61
+    csrrw: 50
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs1_val >= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 38
+    (rs2_val == 0x1): 9
+    coverage: 3/3
+  total_coverage: 8/8
+pmp_pte09:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 61
+    csrrw: 50
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs1_val >= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 36
+    (rs2_val == 0x1): 9
+    coverage: 3/3
+  total_coverage: 8/8
+pmp_pte10:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 60
+    csrrw: 50
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs1_val >= (pmpaddr3 << 2)) and ((pmpcfg0 & 0xFF000000) >> 24 == 0x18): 37
+    (rs2_val == 0x1): 9
+    coverage: 3/3
+  total_coverage: 9/9
+pmp_pte11:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 60
+    csrrw: 50
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs1_val >= (pmpaddr2 << 2)) and ((pmpcfg0 & 0xFF0000) >> 16 == 0x18): 38
+    (rs2_val == 0x1): 9
+    coverage: 3/3
+  total_coverage: 9/9
+pmp_pte12:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 60
+    csrrw: 50
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs1_val >= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 36
+    (rs2_val == 0x1): 9
+    coverage: 3/3
+  total_coverage: 9/9
+reserved_rwx01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C5)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+reserved_rwx02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C5)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+reserved_rwx03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C5)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 8/8
+reserved_rwx04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D5)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+reserved_rwx05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D5)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+reserved_rwx06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D5)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+reserved_rwx07:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D5)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+reserved_rwx08:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D5)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+reserved_rwx09:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D5)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+sum_set01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x40000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 16
+    csrrw: 22
+    sd: 40
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val != 0xC): 78
+    (rs2_val != 0xD): 78
+    (rs2_val != 0xF): 78
+    coverage: 4/4
+  total_coverage: 10/10
+sum_set02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x40000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 16
+    csrrw: 22
+    sd: 40
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val != 0xC): 78
+    (rs2_val != 0xD): 78
+    (rs2_val != 0xF): 78
+    coverage: 4/4
+  total_coverage: 10/10
+sum_set03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x40000: 13
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 16
+    csrrw: 22
+    sd: 40
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs2_val != 0xC): 78
+    (rs2_val != 0xD): 78
+    (rs2_val != 0xF): 78
+    coverage: 4/4
+  total_coverage: 10/10
+sum_set04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x40000: 36
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 56
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+sum_set05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x40000: 36
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 56
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+sum_set06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x40000: 36
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 56
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+sum_unset01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x0: 30
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+sum_unset02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x0: 30
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+sum_unset03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x0: 30
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 25
+    csrrw: 28
+    sd: 64
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+sum_unset04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x0: 46
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+sum_unset05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x0: 46
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+sum_unset06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (mstatus & 0x40000) == 0x0: 46
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 3/3
+  mnemonics:
+    csrrs: 55
+    csrrw: 45
+    sd: 130
+    coverage: 3/3
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+ubit_set01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_set02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 14
+    csrrw: 22
+    sd: 44
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val != 0xD): 81
+    (rs2_val != 0xF): 81
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_set03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D1)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_set04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 14
+    csrrw: 22
+    sd: 44
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0D7)): 1
+    (rs2_val != 0xD): 81
+    (rs2_val != 0xF): 81
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_set05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D1)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_set06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 14
+    csrrw: 22
+    sd: 44
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+    (rs2_val != 0xD): 81
+    (rs2_val != 0xF): 81
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_unset01:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_unset02:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_unset03:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 24
+    csrrw: 28
+    sd: 68
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs2_val == 0xD): 1
+    (rs2_val == 0xF): 1
+    coverage: 3/3
+  total_coverage: 9/9
+ubit_unset04:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+ubit_unset05:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000004) and ((rs2_val & 0xFFF) == 0x0C7)): 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8
+ubit_unset06:
+  config:
+  - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+    def rvtest_strap_routine=True;
+  csr_comb:
+    (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+    (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+    coverage: 2/2
+  mnemonics:
+    csrrc: 1
+    csrrs: 54
+    csrrw: 45
+    sd: 134
+    coverage: 4/4
+  val_comb:
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 1
+    (rs2_val == 0xC): 9
+    coverage: 2/2
+  total_coverage: 8/8

@@ -1,0 +1,21 @@
+sum_set03:
+     config:
+        - check ISA:=regex(.*64.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True;
+          def rvtest_strap_routine=True;
+     csr_comb:
+          (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0'): 1
+          (mstatus & 0x40000) == 0x40000: 13
+          (satp >> 60 == 0x8) and (rs1 == 'x31') and (rd == 'x0'): 1
+          coverage: 3/3
+     mnemonics:
+          csrrs: 16
+          csrrw: 22
+          sd: 40
+          coverage: 3/3
+     val_comb:
+          (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 1
+          (rs2_val != 0xC): 78
+          (rs2_val != 0xD): 78
+          (rs2_val != 0xF): 78
+          coverage: 4/4
+     total_coverage: 10/10
