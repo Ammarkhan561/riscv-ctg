@@ -76,7 +76,8 @@ invalid_PTE03:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C6)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C6)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -157,7 +158,8 @@ invalid_PTE06:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D6)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D6)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -233,7 +235,8 @@ invalid_PTE09:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                        # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C6)): 0              # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C6)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -311,7 +314,8 @@ invalid_PTE12:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                        # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D6)): 0              # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D6)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -389,7 +393,8 @@ access_bit03:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000087)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x087)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -470,7 +475,8 @@ access_bit06:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000097)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x097)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -545,7 +551,8 @@ access_bit09:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000089)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x089)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -624,7 +631,8 @@ access_bit12:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000099)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x099)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -699,7 +707,8 @@ dirty_bit03:
   val_comb:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000047)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x047)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -777,7 +786,8 @@ dirty_bit06:
   val_comb:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x0020000000000057)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x057)) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -830,8 +840,8 @@ misaligned_superpage02:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004C7) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
-                                                                                                # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4C7) and (((rs2_val &  0xFFFFC00) != 0x0))) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -886,8 +896,8 @@ misaligned_superpage04:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004D7) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
-                                                                                                # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4D7) and (((rs2_val &  0xFFFFC00) != 0x0))) if rs2_val is not None else None: 0               
+                                                                                                # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -938,7 +948,7 @@ misaligned_superpage06:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004C9) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4C9) and (((rs2_val &  0xFFFFC00) != 0x0))) if rs2_val is not None else None: 0               
                                                                                                 # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -992,7 +1002,7 @@ misaligned_superpage08:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000007) and (rs2_val  == 0x00200000000004D9) and (((rs2_val &  0xFFFFC00) != 0x0))): 0 
+    (((rs1_val >> 12 ) == 0x80000000007) and ((rs2_val & 0xFFF) == 0x4D9) and (((rs2_val &  0xFFFFC00) != 0x0))) if rs2_val is not None else None: 0               
                                                                                                 # checks the PTE permission,level1 and that either ppn0!=0 or ppn1!=0 (misaligned) at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1077,7 +1087,8 @@ mxr_set03:
     (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
     (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
     (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault"    
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C9)) if rs2_val is not None else None: 0 
+                                                                                                # checks the PTE permission and level2 at which PTE is stored               
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1164,7 +1175,8 @@ mxr_set06:
     (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
     (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
     (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault"    
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D9)) if rs2_val is not None else None: 0 
+                                                                                                # checks the PTE permission and level2 at which PTE is stored               
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1245,7 +1257,8 @@ mxr_unset03:
   val_comb:
 
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C9)) if rs2_val is not None else None: 0 
+                                                                                                # checks the PTE permission and level2 at which PTE is stored               
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1326,7 +1339,8 @@ mxr_unset06:
   val_comb:
 
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D9)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D9)) if rs2_val is not None else None: 0 
+                                                                                                # checks the PTE permission and level2 at which PTE is stored               
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1410,7 +1424,8 @@ sum_set03:
     (rs2_val != 0xF): 0                                                                         # check if the rs2 does not match the "store/AMO page fault
     (rs2_val != 0xD): 0                                                                         # check if the rs2 does not match the "load page fault
     (rs2_val != 0xC): 0                                                                         # checks if the rs2 does not match the " Instruction page fault" 
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1488,8 +1503,8 @@ sum_set06:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault" 
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D7)): 0               # checks the PTE permission and level2 at which PTE is stored 
-
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
 
@@ -1569,8 +1584,8 @@ sum_unset03:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D7)): 0               # checks the PTE permission and level2 at which PTE is stored 
-
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
 
@@ -1647,8 +1662,8 @@ sum_unset06:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault" 
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D7)): 0               # checks the PTE permission and level2 at which PTE is stored 
-
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
 
@@ -1782,8 +1797,8 @@ ubit_set05:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D1)): 0               # checks the PTE permission and level2 at which PTE is stored 
-
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D1)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
 
@@ -1809,7 +1824,8 @@ ubit_set06:
 
     (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1890,7 +1906,8 @@ ubit_unset03:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -1968,7 +1985,8 @@ ubit_unset06:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2046,7 +2064,8 @@ Smode_page_in_Smode03:
 
     (rs2_val != 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val != 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2124,7 +2143,8 @@ Smode_page_in_Smode06:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C1)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C1)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2199,7 +2219,8 @@ Smode_page_in_Smode09:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C7)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2277,7 +2298,8 @@ reserved_rwx03:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000C5)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C5)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2358,7 +2380,8 @@ reserved_rwx06:
 
     (rs2_val == 0xF): 0                                                                         # check if the rs2 matches the "store/AMO page fault
     (rs2_val == 0xD): 0                                                                         # check if the rs2 matches the "load page fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D5)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D5)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2436,7 +2459,8 @@ reserved_rwx09:
   val_comb:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val  == 0x00200000000000D5)): 0               # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D5)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2516,6 +2540,7 @@ nonleaf_pte03:
 
     (rs2_val == 0xC): 0                                                                         # checks if the rs2 matches the " Instruction page fault"
     (((rs1_val >> 12 ) == 0x80000000005) and ((rs2_val & 0xFFF) == 0x0D1)): 0                   # checks the PTE permission and level0 at which PTE is stored 
+
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
@@ -2598,7 +2623,8 @@ pmp_pte03:
 
     (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
     (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000C7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
     (rs1_val >= (pmpaddr4 << 2)) and (rs1_val <= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
                                                                                                 # Check if rs1_val falls within the range specified by pmpaddr2, and if the
                                                                                                 # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
@@ -2687,7 +2713,8 @@ pmp_pte06:
 
     (rs2_val == 0x7): 0                                                                         # check if the rs2 matches the "store/AMO access fault
     (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000D7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
     (rs1_val >= (pmpaddr4 << 2)) and (rs1_val <= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
                                                                                                 # Check if rs1_val falls within the range specified by pmpaddr2, and if the
                                                                                                 # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
@@ -2770,13 +2797,15 @@ pmp_pte09:
   val_comb:
 
     (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000C7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
     (rs1_val >= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
                                                                                                 # Check if rs1_val falls within the range specified by pmpaddr2, and if the
                                                                                                 # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
+
 pmp_pte10:
 
   config:
@@ -2855,7 +2884,8 @@ pmp_pte12:
   val_comb:
 
     (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
-    (((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000D7)): 0                # checks the PTE permission and level2 at which PTE is stored     
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
     (rs1_val >= (pmpaddr4 << 2)) and ((pmpcfg0 & 0xFF00000000) >> 32 == 0x18): 0
                                                                                                 # Check if rs1_val falls within the range specified by pmpaddr2, and if the
                                                                                                 # corresponding 8 bits of pmpcfg0 are equal to 0x18( No Read and write permissions)    
@@ -2953,7 +2983,8 @@ pmp_pa03:
     (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
     (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
    
-    ((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000C7): 0                   # checks the PTE permission and level2 at which PTE is stored 
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0C7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
     (rs1_val == 0x0980000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
     # checks that the value in rs1 equals to 0x0980000688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
     # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
@@ -3056,8 +3087,8 @@ pmp_pa06:
     (rs2_val == 0x5): 0                                                                         # check if the rs2 matches the "load access fault
     (rs2_val == 0x1): 0                                                                         # check if the rs2 matches the instruction access fault
    
-    ((rs1_val >> 12 ) == 0x80000000006) and (rs2_val == 0x00200000000000D7): 0                   # checks the PTE permission and level2 at which PTE is stored 
-
+    (((rs1_val >> 12 ) == 0x80000000006) and ((rs2_val & 0xFFF) == 0x0D7)) if rs2_val is not None else None: 0 
+                                                                                                 # checks the PTE permission and level2 at which PTE is stored 
     (rs1_val == 0x0980000688 ) and ((pmpcfg0 & 0xFF00) >> 8 == 0x08): 0                        
     # checks that the value in rs1 equals to 0x0980000688 (va_data) which is a virtual address for the rvtest_data where there is no read and write 
     # PTE permissions, which is confirmed by checking the bits fo pmpcfg0, this cover point should hit two times one for the LREG and one for SREG
