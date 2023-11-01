@@ -18,7 +18,7 @@ rvtest_entry_point:
 RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
-    RVTEST_CASE(1,"//check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sv32)
+    RVTEST_CASE(1,"//check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",invalid_PTE01)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
   	
@@ -36,11 +36,6 @@ main:
 	
 	ALL_MEM_PMP          						        // set the PMP permissions
 	WRITE_CSR (satp,x0)  						        // write satp with all zeros (bare mode)
-
-        li s9, 0x34
-        la s9, rvtest_sig_begin
-        la s9, signature_x13_1
-        la s9, sig_begin_canary
 
 	.set va,       0x90000000
 	.set pa,       0x80000000 
