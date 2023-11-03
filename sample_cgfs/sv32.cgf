@@ -2744,6 +2744,32 @@ rwx_reserved12:
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
 
+mstatus_tvm01:
+
+  config:
+
+  - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+
+  mnemonics:
+
+    csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+    csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+    sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+  csr_comb:
+
+    (satp >> 31 == 0x1) and (rs1 == 'x31') and (rd == 'x0'): 0                                  # Check if the top 4 bits of the "satp" register indicate sv39 mode.
+    (mstatus & 0x1800)  == 0x0800 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "S" mode.
+    (mstatus & 0x100000) == 0x100000 : 0                                                        # Check mstatus.TVM = 1
+
+  val_comb:
+
+    (rs2_val == 0x2): 0                                                                         # check if the rs2 matches the "illegal instruction
+    (((rs1_val >> 12 ) == 0x82002) and ((rs2_val & 0xFFF) == 0x0EF)): 0                         # checks the PTE permission and level1 at which PTE is stored 
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
 mstatus_tvm02:
 
   config:
@@ -2870,6 +2896,159 @@ mstatus_tvm06:
 
     (rs2_val == 0x2): 0                                                                         # check if the rs2 matches the "illegal instruction
     (((rs1_val >> 12 ) == 0x82001) and ((rs2_val & 0xFFF) == 0x0EF)): 0                         # checks the PTE permission and level0 at which PTE is stored 
+
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+vm_Bare_mode_01:
+
+    config:
+
+      - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+
+    mnemonics:
+
+      csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+      csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+      csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+      sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+    csr_comb:
+
+      (satp >> 31 == 0x0) : 0                                                                     # Check if the top 4 bits of the "satp" register indicate Bare mode.
+      (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+    val_comb:
+
+      (rs2_val != 0x2): 0                                                                         # checks if the rs2 does not matches the " illegal instruction fault"
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+vm_Bare_mode_02:
+
+    config:
+
+      - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+
+    mnemonics:
+
+      csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+      csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+      csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+      sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+    csr_comb:
+
+      (satp >> 31 == 0x0) : 0                                                                     # Check if the top 4 bits of the "satp" register indicate Bare mode.
+      (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+    val_comb:
+
+      (rs2_val == 0x2) : 0                                                                        # checks if the rs2 does not matches the " illegal instruction fault"
+      (((rs1_val >> 12 ) == 0x80802) and ((rs2_val & 0xFFF) == 0x0D9)): 0                         # checks the PTE permission and level0 at which PTE is stored
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+vm_Bare_mode_03:
+
+    config:
+
+      - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+
+    mnemonics:
+
+      csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+      csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+      csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+      sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+    csr_comb:
+
+      (satp >> 31 == 0x0) : 0                                                                     # Check if the top 4 bits of the "satp" register indicate Bare mode.
+      (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+    val_comb:
+
+      (rs2_val != 0x2): 0                                                                         # checks if the rs2 does not matches the " illegal instruction fault"
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+vm_Bare_mode_04:
+
+    config:
+ 
+      - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+ 
+    mnemonics:
+ 
+      csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+      csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+      csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+      sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+ 
+    csr_comb:
+ 
+      (satp >> 31 == 0x0) : 0                                                                     # Check if the top 4 bits of the "satp" register indicate Bare mode.
+      (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+ 
+    val_comb:
+ 
+      (rs2_val == 0x2) : 0                                                                        # checks if the rs2 does not matches the " illegal instruction fault"
+      (((rs1_val >> 12 ) == 0x80801) and ((rs2_val & 0xFFF) == 0x0D9)): 0                         # checks the PTE permission and level0 at which PTE is stored
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+vm_Bare_mode_05:
+
+    config:
+
+      - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+
+    mnemonics:
+
+      csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+      csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+      csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+      sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+    csr_comb:
+
+      (satp >> 31 == 0x0) : 0                                                                     # Check if the top 4 bits of the "satp" register indicate Bare mode.
+      (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+    val_comb:
+
+      (rs2_val == 0x2) : 0                                                                        # checks if the rs2 does not matches the " illegal instruction fault"
+      (((rs1_val >> 12 ) == 0x80802) and ((rs2_val & 0xFFF) == 0x0D9)): 0                         # checks the PTE permission and level0 at which PTE is stored
+
+# *----------------------------------------------------------------------------------------------------------------------
+# *----------------------------------------------------------------------------------------------------------------------
+
+vm_Bare_mode_06:
+
+    config:
+
+      - check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True
+
+    mnemonics:
+
+      csrrw       : 0                                                                             # Sets the expected encoding value for the "csrrw" mnemonic.
+      csrrs       : 0                                                                             # Sets the expected encoding value for the "csrrs" mnemonic.
+      csrrc       : 0                                                                             # Sets the expected encoding value for the "csrrc" mnemonic.
+      sw          : 0                                                                             # Sets the expected encoding value for the "sd" mnemonic.
+
+    csr_comb:
+
+      (satp >> 31 == 0x0) : 0                                                                     # Check if the top 4 bits of the "satp" register indicate Bare mode.
+      (mstatus & 0x1800)  == 0x0000 and ( rs1 == 'x9' ) and (rd == 'x0') : 0                      # Ensure the "MPP" bits in "mstatus" are set to "U" mode.
+
+    val_comb:
+
+      (rs2_val == 0x2) : 0                                                                        # checks if the rs2 does not matches the " illegal instruction fault"
+      (((rs1_val >> 12 ) == 0x80801) and ((rs2_val & 0xFFF) == 0x0D9)): 0                         # checks the PTE permission and level0 at which PTE is stored
 
 # *----------------------------------------------------------------------------------------------------------------------
 # *----------------------------------------------------------------------------------------------------------------------
