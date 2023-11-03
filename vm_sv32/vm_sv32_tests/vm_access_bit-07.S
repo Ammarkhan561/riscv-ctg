@@ -1,65 +1,63 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////        
-//                                                                                               //
-// Verification Goal: Set pte.r=0 & pte.w=0 & pte.x=1 & s/mstatus.MXR=0 and test the read acces	//
-//		     for level0 PTE in User mode,Should raise load page fault.			//
-//												//												#											
-// Description:       If PTE has only execute permission (pte.x = 1) and s/mstatus.MXR=0, then 	//
-//		     read access on that PTE should raise load page fault exception.		//
-//////////////////////////////////////////////////////////////////////////////////////////////////        
-  
+/////////////////////////////////////////////////////////////////////////////////////////////////           
+// Verification Goal: - Set PTE.A = 0 for user code and test the execute access for	       //
+// 		      - level0 PTE in User mode. Should raise Instruction page fault 	       //
+//											       //														
+// Discription:       If implementation does not sets the pte.A on accessing the PTE, and PTE  //
+//                    has pte.A=0, then accessing it would raise page fault exception of the   // 
+//                    corresponding access type.                                               //
+///////////////////////////////////////////////////////////////////////////////////////////////// 
 #include "model_test.h"
 #include "arch_test.h"
 
 RVTEST_ISA("RV32I_Zicsr")
 
-# Test code region
+// Test code region
 .section .text.init
 .globl rvtest_entry_point
 rvtest_entry_point:
 RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
-    RVTEST_CASE(1,"//check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",mxr_unset04)
-
+    RVTEST_CASE(1,"//check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",access_bit07)
 RVTEST_SIGBASE( x13,signature_x13_1)
-  	
-main:
-# ---------------------------------------------------------------------------------------------
 
-#ifdef rvtest_mtrap_routine					                // Verification of existance of rvtest_mtrap_routine
+main:
+
+// ---------------------------------------------------------------------------------------------
+
+//ifdef rvtest_mtrap_routine					                // Verification of existance of rvtest_mtrap_routine
 	LI a4, 0xceed
 	RVTEST_SIGUPD(x13,a4)
-#endif
-#ifdef rvtest_strap_routine					                // Verification of existance of rvtest_strap_routine
+//endif
+//ifdef rvtest_strap_routine					         	// Verification of existance of rvtest_strap_routine
 	LI a4, 0xbeed
 	RVTEST_SIGUPD(x13,a4)
-#endif
+//endif
 	
-	ALL_MEM_PMP          		                                        // set the PMP permissions
-	csrw satp,x0	 		                                        // write satp with all zeros (bare mode)
+	ALL_MEM_PMP          							// set the PMP permissions for the whole memory
+	WRITE_CSR (satp,x0)  							// Bare Mode setup
 
-	.set va,		0x90000000
-	.set pa,		0x80000000 
-	.set va_data,	        0x90011000                                      // MSB 10 bits should be same as that of va 
-        .set sig_data,          0x93003110                                      // virtual address of signature_x13_1
-                                                                                // PTE setup for sig_data -> rvtest_slvl1_pg_tbl*/
+	.set va,		0x90000000                  			// Page table level 1  VA   
+	.set pa,		0x80000000                  			// rvtest_entry_point physical address
+	.set va_data,		0x90011000                  			// rvtest_data Virtual address set at level 0 
+        .set sig_data, 		0x93003114                                      // virtual address of signature_x13_1
+       										// PTE setup for sig_data -> rvtest_slvl1_pg_tbl
 	la a0, rvtest_slvl1_pg_tbl   		                                // loads the base address of the pg_tbl0        				
 	li a1, (PTE_V)                                                          // sets the permissions bits                
 	PTE_SETUP_RV32(a0, a1, t0, t1, sig_data, LEVEL1)	                // setup the PTE for level1 
-                                                     				// PTE setup for Instruction memory 0x90000000 -> 0x80000000                                             			                // pgtbl1 PTE Setup to point to the pgtbl0 PTE
-	LA (a0, rvtest_slvl1_pg_tbl)                                            // stores the base address of pgtbl0 address in a0
-	LI (a1, PTE_V)                                                          // sets the PR bit to valid only to point to the pgtbl0 PTE
-	PTE_SETUP_RV32(a0, a1, t0, t1, va, LEVEL1)                              // setup the PTE for level1
-     
-                                             		                        // PTE setup for Instruction memory 0x90000000 -> 0x80000000
-	LA (a0, pa)                                                             // loads the address in a0
-	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_W | PTE_R | PTE_V )        // sets the permission bits
-	PTE_SETUP_RV32(a0, a1, t0, t1, va, LEVEL0)                              // setup the PTE for level1
-								                // PTE setup for rvtest_data 0x91000000 -> rvtest_data	
-	LA (a0, rvtest_data)                                                    // loads the address of label rvtest_data in a0
-	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V )               		// sets the permission bits (PTE_V == 0)
-	PTE_SETUP_RV32(a0, a1, t0, t1, va_data, LEVEL0)                         // setup the PTE for level1
-                                                                                // PTE setup for 0x93003114 -> signature_x13_1
+    										// PTE SETUP at level 1 -- Base address of PGtable stored in the PTE
+	LA a0, rvtest_slvl1_pg_tbl						// loads the root page table address 
+    	LI a1, (PTE_V)                                          		// Valid permission only--> point at level 0 page table
+	PTE_SETUP_RV32(a0, a1, t0, t1, va, 1)				    	// function to setup level1  PTE
+    										// PTE SETUP at level 0 -- rvtest_entry_point physical address stored
+	LI a0, pa								// loads the PA 
+	LI a1, (PTE_D | PTE_U | PTE_G | PTE_X | PTE_W | PTE_R | PTE_V)  	// sets the permission bits 
+	PTE_SETUP_RV32(a0, a1, t0, t1, va, 0)					// function to setup level0 PTE
+    										// PTE SETUP at level 0 -- rvtest_data physical address stored
+	LA (a0, rvtest_data)							// loads the address of rvtest_data label
+	LI a1, (PTE_G | PTE_D | PTE_U | PTE_X | PTE_W | PTE_V)  		// sets the permission bits
+	PTE_SETUP_RV32(a0, a1, t0, t1, va_data, 0)				// function to setup the level0 PTE
+        									// PTE setup for 0x93003114 -> rvtest_sig_begin
 	la a0, rvtest_sig_begin   						// Physical address of signature area
 	li a1, ( PTE_D | PTE_A | PTE_U | PTE_R | PTE_W | PTE_X | PTE_V)         // sets the permissions bits 
 	PTE_SETUP_RV32(a0, a1, t0, t1, sig_data, LEVEL0) 			// PTE Setup for signature area address at pgtbl0
@@ -69,6 +67,7 @@ main:
 	sub t0, t0, t1 					        		// (VA-PA) Note: VA > PA 
 	add s11, x13, t0				        		// Translation of Signature reg
 
+        
         SATP_SETUP_SV32                                                         // set the SATP for virtualization
 
 	/* Save Virtual addresses in of Code and Data 
@@ -112,16 +111,15 @@ main:
         SREG t2, vmem_bgn_off+1*sv_area_sz(sp)                                  // write the address of vmem_bgn_off in sscratch
         SREG t2, vmem_bgn_off+2*sv_area_sz(sp)                                  // write the address of vmem_bgn_off in sscratch
         sfence.vma                                                              // flush the TLB
-	li s7, MSTATUS_MXR
-        csrc mstatus,s7	                                                        // clear the mstatus.MXR = 0 
-	RVTEST_GOTO_LOWER_MODE	Umode		                                // Switching to S mode
+        RVTEST_GOTO_LOWER_MODE  Umode                                           // Switching to U mode
+
 
 vm_en:
 	LI (a4, 0xdead)
 	RVTEST_SIGUPD(s11,a4)                                                   // Verification of virtualization enabeled
         
 	LA (t0, va_data)                                                        
-	LREG x2, 0(t0)                                                          // test the load access (should raise an exception)
+	SREG x2, 0(t0)                                                          // test the store access 
         nop                                             
         
 	LI (a4, 0xbeef)                                                         // Verification of coming back from trap handler 
@@ -133,23 +131,25 @@ vm_en:
 	LI (a4, 0x123)
 	RVTEST_SIGUPD(x13,a4)                                                   // Verification of virtualization disabled
 #endif
+ 
+ // ---------------------------------------------------------------------------------------------
 
- # ---------------------------------------------------------------------------------------------
 RVTEST_CODE_END
 RVMODEL_HALT
-
 RVTEST_DATA_BEGIN
+
 .align 24
 rvtest_data:
 .word 0xbeefcafe
 .word 0xbabecafe
 .word 0xbabecafe
 .word 0xbabecafe
-#ifdef rvtest_strap_routine
+
+//ifdef rvtest_strap_routine
 .align 12
 rvtest_slvl1_pg_tbl:
 		RVTEST_PTE_IDENT_MAP
-#endif
+//endif
 RVTEST_DATA_END
 RVMODEL_DATA_BEGIN
 rvtest_sig_begin:
@@ -161,10 +161,10 @@ signature_x13_1:
     .fill 32*(XLEN/32),4,0xcafebeef
 
 // trap signatures initialization
-#ifdef rvtest_mtrap_routine
+//ifdef rvtest_mtrap_routine
 mtrap_sigptr:
     .fill 32*(XLEN/32),4,0xdeadbeef
-#endif
+//endif
 
 sig_end_canary:
 CANARY;

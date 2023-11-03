@@ -1,14 +1,16 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////    
-// Verification Goal: Test the Execute acces in Supervisor mode for Level1 such that    	//
-//                    (PTE.x = 1, PTE.w = 1, PTE.u=1 and mstatus.SUM=0)                         //
-//		      Execute access to the PTE should raise instruction page fault 		//
-//												//
-// Description:       If PTE belongs to user mode i.e. its U permission bit is set (pte.u = 1)	//
-//                    and m/sstatus.SUM = 0, then accessing that PTE in supervisor mode would	//
-//		      raise page fault exception of the corresponding access type. 		//
-//////////////////////////////////////////////////////////////////////////////////////////////////        
-     
+# ###############################################################################################           
+# Verification Goal: Test the write acces in Supervisor mode for Level1 such that (PTE.x = 1,	#
+# 		     PTE.r = 1, PTE.u=1 and mstatus.SUM=1), write access to the PTE should be 	#
+#  		     successful                                                                 #
+#												#		
+# Discription:       If PTE belongs to user mode i.e. its U permission bit is set (pte.u = 1)   #
+#                    and m/sstatus.SUM = 1, then RW access to that PTE in supervisor mode       #
+#                    would be successful but eXecute access would raise instruction page        #
+#                    fault exception in s-mode.                                                 #   
+# ###############################################################################################   
+
 #include "model_test.h"
+
 #include "arch_test.h"
 
 RVTEST_ISA("RV32I_Zicsr")
@@ -20,7 +22,7 @@ rvtest_entry_point:
 RVMODEL_BOOT
 RVTEST_CODE_BEGIN
 #ifdef TEST_CASE_1
-    RVTEST_CASE(1,"//check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sum_unset03)
+    RVTEST_CASE(1,"//check ISA:=regex(.*32.*); check ISA:=regex(.*I.*Zicsr.*); def rvtest_mtrap_routine=True; def rvtest_strap_routine=True; def TEST_CASE_1=True",sum_set02)
 
 RVTEST_SIGBASE( x13,signature_x13_1)
   	
@@ -50,7 +52,7 @@ main:
 	PTE_SETUP_RV32(a0, a1, t0, t1, sig_data, LEVEL1)	                // setup the PTE for level1 
                                           				  	// PTE setup for Instruction memory 0x90000000 -> 0x80000000
 	LA (a0, pa)                                               		// loads the address in a0
-	LI a1, ( PTE_D | PTE_A | PTE_U | PTE_X | PTE_V )			// sets the permission bits
+	LI a1, ( PTE_D | PTE_A | PTE_X | PTE_V )				// sets the permission bits
 	PTE_SETUP_RV32(a0, a1, t0, t1, va, LEVEL1)                		// setup the PTE for level1
 										// PTE setup for rvtest_data 0x91000000 -> rvtest_data	
 	LA (a0, rvtest_data)                                      		// loads the address of label rvtest_data in a0
@@ -107,6 +109,8 @@ main:
 	add t2, t1, t0                                                          // add the offset to the base address of save area
 	SREG t2, vmem_bgn_off+1*sv_area_sz(sp)                                  // write the address of vmem_bgn_off in sscratch
 	sfence.vma
+        li s7, MSTATUS_SUM
+        SET_CSR(mstatus,s7)                                                      // set the mstatus.SUM = 1 
 	RVTEST_GOTO_LOWER_MODE	Smode		                                 // Switching to S mode
 
 vm_en:
